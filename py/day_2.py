@@ -1,6 +1,7 @@
 from AoC import AoC
 
 class Day2(AoC):
+    
     def solve1(self):
         lines = [line.strip() for line in self.input.split('\n')]
 
@@ -19,9 +20,6 @@ class Day2(AoC):
         safe_reports = 0
         for line_index, line in enumerate(lines):
             numbers = [int(num) for num in line.split()]
-
-            increasing = numbers[0] < numbers[1]
-
             if self.test_safe(numbers):
                 safe_reports += 1
                 continue
