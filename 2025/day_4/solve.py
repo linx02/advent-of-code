@@ -20,11 +20,31 @@ def accessible(i, j):
         if lines[i + y][j + x] == '@': c += 1
     return c < 4
 
-a = 0
-for i, l in enumerate(lines):
-    for j, c in enumerate(l):
-        if c == '@':
-            if accessible(i, j):
-                a += 1
+def scan(lines):
+    a = 0
+    for i, l in enumerate(lines):
+        for j, c in enumerate(l):
+            if c == '@':
+                if accessible(i, j):
+                    tmp = list(lines[i])
+                    tmp[j] = 'x'
+                    tmp = ''.join(tmp)
+                    lines[i] = tmp
+                    a += 1
+    return a, lines
 
-print(a)
+def solve1(lines):
+    a, lines = scan(lines)
+    return a
+
+def solve2(lines):
+    a = 0
+    while True:
+        tmp, lines = scan(lines)
+        a += tmp
+        if tmp == 0:
+            break
+
+    return a
+
+print(solve2(lines))
