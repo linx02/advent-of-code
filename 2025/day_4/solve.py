@@ -33,18 +33,22 @@ def scan(lines):
                     a += 1
     return a, lines
 
-def solve1(lines):
-    a, lines = scan(lines)
+def solve1():
+    global lines
+    a, lines_ = scan(lines)
     return a
 
-def solve2(lines):
+def solve2():
+    global lines
+    lines_ = lines
     a = 0
     while True:
-        tmp, lines = scan(lines)
+        tmp, lines_ = scan(lines)
         a += tmp
         if tmp == 0:
             break
 
     return a
 
-print(solve2(lines))
+print(solve1())
+print(solve2())
